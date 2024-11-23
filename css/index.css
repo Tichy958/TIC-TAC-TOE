@@ -15,7 +15,10 @@
   padding: 0;
   margin: 0;
   border: none;
-  box-sizing: border-box;
+  box-sizing: border-box; /*With box-sizing: border-box, 
+  the width of an element includes its padding and borders.
+  This impacts the size calculations of elements but does not affect
+  layout rules like margin-left: auto.*/
   list-style: none;
   font-family: "Montserrat", sans-serif; /* tenhle font zatím není */
 }
@@ -31,6 +34,33 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+/* Shared utility classes */
+
+button:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.turquoise {
+  color: var(--turquoise);
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.border {
+  border: 1px solid rgba(211, 211, 211, 0.4) !important;
 }
 
 .grid {
@@ -50,8 +80,54 @@ body {
   background-color: red;
 }
 
-.actions {
-  background-color: aliceblue;
+.menu {
+  position: relative;
+}
+/* .menu {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 10px;
+  font-size: 0.2rem;
+  background-color: var(--gray);
+} */
+
+.menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  color: var(--light-gray);
+  background-color: var(--gray);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.7rem; /* The 
+  <button> element, by default, does not inherit font-related styles
+  (like font-size, font-family) directly from its parent (.menu in this case).*/
+}
+.items {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 10;
+  background-color: var(--gray);
+  border-radius: 10px;
+}
+.items button {
+  background-color: transparent;
+  padding: 10px;
+  color: var(--light-gray);
+}
+.items button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.fa-chevron-down {
+  margin-left: auto;
 }
 
 /* Footer styles */
