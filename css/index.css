@@ -71,13 +71,33 @@ button:hover {
 }
 
 /* Menu styles  */
-
 .square {
-  background-color: #f2b147;
+  display: flex;
+  border-radius: 10px;
+  background-color: var(--gray);
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+.square:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.score p {
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.score {
-  background-color: red;
+.score span {
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 .menu {
@@ -104,7 +124,7 @@ button:hover {
   background-color: var(--gray);
   border: 1px solid transparent;
   border-radius: 10px;
-  padding: 10px;
+  /* padding: 10px; */
   font-size: 0.7rem; /* The 
   <button> element, by default, does not inherit font-related styles
   (like font-size, font-family) directly from its parent (.menu in this case).*/
@@ -115,7 +135,7 @@ button:hover {
   right: 0;
   z-index: 10;
   background-color: var(--gray);
-  border-radius: 10px;
+  padding: 10px;
 }
 .items button {
   background-color: transparent;
@@ -130,7 +150,8 @@ button:hover {
   margin-left: auto;
 }
 
-/* Footer styles */
+/* 
+ styles */
 
 footer {
   color: white;
@@ -144,6 +165,38 @@ footer p {
 
 footer a {
   color: var(--yellow);
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #0e161b67;
+}
+
+.modal-contents {
+  /* transform: translateY(-80px); */
+  height: 150px;
+  width: 100%;
+  max-width: 300px; /* good practice to do this in mobile first apps */
+  background-color: #2a4544;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  margin: 10px;
+}
+.modal-contents button {
+  padding: 10px;
+  background-color: var(--turquoise);
+  color: #2a4544;
+  border-radius: 3px;
 }
 
 @media (min-width: 768px) {

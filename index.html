@@ -34,23 +34,31 @@
         </div>
 
         <!--Game board-->
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+        <div id="1" class="square shadow"></div>
+        <div id="2" class="square shadow"></div>
+        <div id="3" class="square shadow"></div>
+        <div id="4" class="square shadow"></div>
+        <div id="5" class="square shadow"></div>
+        <div id="6" class="square shadow"></div>
+        <div id="7" class="square shadow"></div>
+        <div id="8" class="square shadow"></div>
+        <div id="9" class="square shadow"></div>
 
         <!-- Score board -->
-        <div class="score"></div>
-        <div class="score"></div>
-        <div class="score"></div>
+        <div class="score shadow" style="background-color: var(--turquoise)">
+          <p>Player 1</p>
+          <span data-id="p1-wins">0 Wins</span>
+        </div>
+        <div class="score shadow" style="background-color: var(--light-gray)">
+          <p>Ties</p>
+          <span data-id="ties">0</span>
+        </div>
+        <div class="score shadow" style="background-color: var(--yellow)">
+          <p>Player 2</p>
+          <span data-id="p2-wins">0 Wins</span>
+        </div>
       </div>
     </main>
-    changed to main insted of master
     <footer>
       <p>
         Original project by
@@ -64,6 +72,16 @@
           >@zg_dev</a
         >
       </p>
+
+      <!-- Modal that opens when the game ends -->
     </footer>
+    <div class="modal" data-id="modal">
+      <div class="modal-contents">
+        <p data-id="modal-text">Player 1 wins!</p>
+        <button data-id="modal-btn">Play again</button>
+      </div>
+    </div>
+    <!-- Here goes JS  -->
+    <script src=""></script>
   </body>
 </html>
