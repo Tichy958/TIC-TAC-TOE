@@ -25,7 +25,7 @@
 
 html,
 body {
-  height: 100%; /* vh ujdane necha nejaky padding na spodu */
+  height: 100%; /* ujdane necha nejaky padding na spodu */
   background-color: var(--dark-gray);
 }
 
