@@ -37,30 +37,27 @@ const App = {
     });
 
     //TODO -
-    // Click on the square will alert - square was clicked.
-    // depending on the player playing, O or X will be added, => current player will be changed
-    //
     App.$.squares.forEach((square) => {
-      square.addEventListener("click", (event) => {
-        console.log(`Square with id ${event.target.id} was clicked`);
-
-        // here needs to be used backtick for (`) - opt + 1
-
-        // Check if there is already a play, if so, return early
-
-        const currentPlayer = App.state.currentPlayer;
-
-        const icon = document.createElement("i");
-
-        if (currentPlayer === 1) {
-          icon.classList.add("fa-solid", "fa-x", "yellow");
-        } else {
-          icon.classList.add("fa-solid", "fa-o", "turqoise");
+      square.addEventListener("click", () => {
+        console.log(square);
+        //CHECK IF THERE IS FRee space in SQUARE
+        if (square.hasChildNodes()) {
+          console.log("Has childNodes");
+          return;
         }
-        App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1;
 
-        // Clear all children of the parent element
-        event.target.replaceChildren(icon);
+        const icon = document.createElement(`i`);
+
+        if (App.state.currentPlayer === 1) {
+          // icon.className = `fa-solid fa star` this would delete all classes in element
+          icon.classList.add("fa-solid", "fa-x", "yellow"); //adds another class
+          square.appendChild(icon);
+          App.state.currentPlayer += 1;
+        } else {
+          icon.classList.add("fa-solid", "fa-o", "turquoise");
+          square.appendChild(icon);
+          App.state.currentPlayer -= 1;
+        }
       });
     });
   },
