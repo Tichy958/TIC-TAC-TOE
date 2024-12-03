@@ -8,6 +8,10 @@ const App = {
     resetBtn: document.querySelector("[data-id='resetBtn']"),
     newRoundBtn: document.querySelector("[data-id='newRoundBtn']"),
     squares: document.querySelectorAll("[data-id='square']"),
+    modal: document.querySelector("[data-id='modal']"),
+    modalText: document.querySelector("[data-id='modal-text']"),
+    modalBtn: document.querySelector("[data-id='modal-btn']"),
+    turn: document.querySelector("[data-id='turn']"),
   },
 
   //   init: function () {}
@@ -29,8 +33,6 @@ const App = {
     const p2Moves = moves
       .filter((move) => move.playerId === 2)
       .map((move) => +move.squareId);
-
-    // // console.log(p1Moves);
 
     const winningPatterns = [
       [1, 2, 3],
@@ -64,7 +66,6 @@ const App = {
     // 	4.	null - the absence of any value.
     // 	5.	undefined - a variable that hasn’t been assigned a value.
     // 	6.	NaN - “Not-a-Number”.
-
     // Any value that is not one of these is considered truthy.
 
     return {
@@ -85,6 +86,14 @@ const App = {
     //TODO
     App.$.newRoundBtn.addEventListener("click", () => {
       console.log("New round started!");
+    });
+
+    App.$.modalBtn.addEventListener("click", () => {
+      App.state.moves = [];
+      App.$.squares.forEach((square) => {
+        square.replaceChildren();
+      });
+      App.$.modal.classList.add("hidden");
     });
 
     //TODO -
@@ -113,14 +122,25 @@ const App = {
             ? 1
             : getOppositePlayer(lastMove.playerId);
 
-        const icon = document.createElement(`i`);
+        const nextPlayer = getOppositePlayer(currentPlayer);
+
+        const squareIcon = document.createElement(`i`);
+        const turnIcon = document.createElement(`i`);
+        const turnLabel = document.createElement(`p`);
+        turnLabel.innerText = `Player ${nextPlayer}, you are up!`;
 
         if (currentPlayer === 1) {
           // icon.className = `fa-solid fa star` this would delete all classes in element
-          icon.classList.add("fa-solid", "fa-x", "yellow"); //adds another class
+          squareIcon.classList.add("fa-solid", "fa-x", "yellow"); //adds another class
+          turnIcon.classList.add("fa-solid", "fa-o", "turquoise");
+          turnLabel.classList = "turquoise";
         } else {
-          icon.classList.add("fa-solid", "fa-o", "turquoise");
+          squareIcon.classList.add("fa-solid", "fa-o", "turquoise");
+          turnIcon.classList.add("fa-solid", "fa-x", "yellow"); //addanother class
+          turnLabel.classList = "yellow";
         }
+
+        App.$.turn.replaceChildren(turnIcon, turnLabel);
 
         //Tracks a record of who clicked on which square
         App.state.moves.push({
@@ -128,19 +148,27 @@ const App = {
           playerId: currentPlayer,
         });
 
-        // console.log(App.state);
+        console.log(App.state);
+        console.log(App.getGameStatus(App.state.moves));
 
-        square.replaceChildren(icon);
+        square.replaceChildren(squareIcon);
 
         // Check if there is a winner or tie game
         const game = App.getGameStatus(App.state.moves);
 
         if (game.status === "complete") {
+          App.$.modal.classList.remove("hidden");
+
+          let message = "";
           if (game.winner) {
-            alert(`Player ${game.winner} wins`);
+            message = `Player ${game.winner} wins!`;
           } else {
-            alert("Tie");
+            message = `Tie game!`;
           }
+
+          // 	1.	let and const have block scope: Variables declared with const or let are limited to the block in which they are declared. In your code, you have const message declared separately in both the if and else blocks. These are not the same as the message variable declared outside the block. - i had let message outside and const message inside if statement
+
+          App.$.modalText.textContent = message;
         }
       });
     });

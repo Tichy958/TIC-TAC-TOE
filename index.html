@@ -15,9 +15,9 @@
     <main>
       <div class="grid">
         <!--Turn indicator-->
-        <div class="turn">
-          <i class="fa-solid fa-x yellow"></i>
-          <p class="turquoise">Player 1, you're up!</p>
+        <div class="turn" data-id="turn">
+          <i class="fa-solid fa-x"></i>
+          <p>Player 1, you're up!</p>
         </div>
 
         <!--Dropdown menu-->
@@ -77,7 +77,7 @@
     </footer>
     <div class="modal hidden" data-id="modal">
       <div class="modal-contents">
-        <p data-id="modal-text">Player 1 wins!</p>
+        <p data-id="modal-text"></p>
         <button data-id="modal-btn">Play again</button>
       </div>
     </div>
