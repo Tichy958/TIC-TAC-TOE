@@ -202,8 +202,6 @@ footer a {
   display: flex;
   align-items: center;
   gap: 20px;
-
-  color: var(--yellow);
 }
 .turn p {
   font-size: 14px;

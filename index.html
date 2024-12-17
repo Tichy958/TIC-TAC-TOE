@@ -14,15 +14,15 @@
   <body>
     <main>
       <div class="grid">
-        <!--Turn indicator-->
+        <!-- Turn indicator -->
         <div class="turn" data-id="turn">
-          <i class="fa-solid fa-x"></i>
-          <p>Player 1, you're up!</p>
+          <i class="fa-solid fa-x turquoise"></i>
+          <p class="turquoise">Player 1, you're up!</p>
         </div>
 
-        <!--Dropdown menu-->
+        <!-- Dropdown menu -->
         <div class="menu" data-id="menu">
-          <button class="menu-btn">
+          <button class="menu-btn" data-id="menu-btn">
             Actions
             <i class="fa-solid fa-chevron-down"></i>
           </button>
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <!--Game board-->
+        <!-- Game board -->
         <div id="1" class="square shadow" data-id="square"></div>
         <div id="2" class="square shadow" data-id="square"></div>
         <div id="3" class="square shadow" data-id="square"></div>
@@ -61,13 +61,13 @@
     </main>
     <footer>
       <p>
-        Original project by
+        <!-- Original project by -->
         <a href="https://twitter.com/megfdev">@megfdev</a> and
         <a href="https://twitter.com/Ivan00sto">@Ivan00Sto</a>
       </p>
 
       <p>
-        Refactored by
+        <!-- Refactored by -->
         <a href="https://twitter.com/zg_dev" style="color: var(--turquoise)"
           >@zg_dev</a
         >
@@ -81,7 +81,7 @@
         <button data-id="modal-btn">Play again</button>
       </div>
     </div>
-    <!-- Here goes JS  -->
-    <script src="JS/APP.JS"></script>
+    <!-- Here goes JS -->
+    <script src="JS/APP.JS" type="module"></script>
   </body>
 </html>
